@@ -8,7 +8,7 @@ import { Movie } from "../model/movie_get_res";
 export const router = express.Router();
 
 
-
+// select *
 router.get("/", (req, res) => {
   conn.query('select * from Movie', (err, result, fields) => {
     res.json(result);
@@ -48,6 +48,8 @@ router.delete("/:id", (req, res) => {
   });
 });
 
+
+// search name
 router.get("/search", (req, res) => {
   const name = req.query.name;
   const sql = "SELECT Movie.*, " +
@@ -65,7 +67,7 @@ router.get("/search", (req, res) => {
       res.status(500).json({ error: err.message });
       return;
     } else {
-      // จัดรูปแบบข้อมูลให้เป็นโครงสร้าง JSON ตามที่ต้องการ
+      // จัดรูปแบบข้อมูลให้เป็นโครงสร้าง JSON 
       const movies = result.map((row: {
         stars: string;
         creators: string;

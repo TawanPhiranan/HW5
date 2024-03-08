@@ -5,7 +5,7 @@ import mysql from "mysql";
 export const router = express.Router();
 
 
-
+//select *
 router.get("/", (req, res) => {
     conn.query('select * from Creators', (err, result, fields) => {
         res.json(result);
